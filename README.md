@@ -1,5 +1,4 @@
-# yap-bot
-Бот "Какой ты язык программирования"
+# Бот "Какой ты язык программирования"
 
 Этот репозиторий не содержит полного кода бота, только изменяемую его часть. Вы можете создавать issue и pull request'ы. Все изменения кода тут - попадают в бота
 
@@ -51,4 +50,27 @@ const languages: Language[] = [
 	new Language('Assembly', 'mov %your %ass'),
 	new Language('Машинный код', '01101001 01100100 01101001 00100000 01101110 01100001 01101000 01110101 01101001'),
 ];
+```
+
+## Неизменяемый код
+
+Что такое **Described**?
+```typescript
+export class Described extends ToHTML {
+	constructor(public readonly name: string, public readonly description: string) {
+		super();
+	}
+
+	getCode(): string {
+		return `<b>${this.name}</b> - <tg-spoiler>${this.description}</tg-spoiler>`;
+	}
+}
+```
+
+Что такое **ToHTML**?
+```typescript
+// Это не интерфейс, потому что есть проверки instanceof с его участием
+export abstract class ToHTML {
+	abstract getCode(): string;
+}
 ```
