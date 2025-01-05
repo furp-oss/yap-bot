@@ -1,3 +1,5 @@
+import { ToHTML } from "./result.ts";
+ 
 export abstract class ToHTML {
 	abstract getCode(): string;
 }
